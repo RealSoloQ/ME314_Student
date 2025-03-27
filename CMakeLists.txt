@@ -28,7 +28,6 @@ install(PROGRAMS
   me314/xarm_planner/xarm_test_move_script.py
   me314/xarm_planner/xarm_commander_node.py
   me314/xarm_planner/xarm_a2b_example.py
-  me314/xarm_planner/pick_and_place_example.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
