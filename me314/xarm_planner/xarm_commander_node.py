@@ -46,11 +46,11 @@ class ME314_XArm_Commander(Node):
         self.use_sim = self.get_parameter('use_sim').value
         self.get_logger().info(f"Running with use_sim={self.use_sim}")
 
-        self.current_joint_positions = [None] * len(self.joint_names)
         self.current_gripper_position = 0.0
         self.home_joints_deg = [1.1, -48.5, 0.4, 32.8, 0.4, 81.9, 0.3]
         self.home_joints_rad = [math.radians(angle) for angle in self.home_joints_deg]
         self.joint_names = ['joint1', 'joint2', 'joint3', 'joint4', 'joint5', 'joint6', 'joint7']
+        self.current_joint_positions = [None] * len(self.joint_names)
 
         self.gripper_group_name = "xarm_gripper"  
         self.gripper_joint_names = ["drive_joint"]

@@ -8,8 +8,8 @@ if [ "$USER" != "root" ]; then
     useradd --create-home --shell /bin/bash --user-group --groups adm,sudo $USER
     echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
     if [ -z "$PASSWORD" ]; then
-        echo "  set default password to \"ubuntu\""
-        PASSWORD=ubuntu
+        echo "  set default password to \"me314\""
+        PASSWORD=me314
     fi
     HOME=/home/$USER
     echo "$USER:$PASSWORD" | /usr/sbin/chpasswd 2> /dev/null || echo ""
@@ -75,10 +75,8 @@ EOF
 # colcon
 BASHRC_PATH=$HOME/.bashrc
 
-INSTALL_PATH=/dev_ws
+INSTALL_PATH=/home/ubuntu/xarm_ros2_ws
 BASE_TYPE=create3
-grep -F   "export INTERBOTIX_XSLOCOBOT_BASE_TYPE=${BASE_TYPE}" "$BASHRC_PATH"  || echo -e "export INTERBOTIX_XSLOCOBOT_BASE_TYPE=${BASE_TYPE}"  >> "$BASHRC_PATH"
-grep -F   "export INTERBOTIX_WS=${INSTALL_PATH}" "$BASHRC_PATH"                || echo -e "export INTERBOTIX_WS=${INSTALL_PATH}"                >> "$BASHRC_PATH"
 grep -F   "source ${INSTALL_PATH}/install/setup.bash" "$BASHRC_PATH"           || echo -e "source ${INSTALL_PATH}/install/setup.bash"            >> "$BASHRC_PATH"
 
 grep -F "source /usr/share/gazebo/setup.bash" $BASHRC_PATH || echo "source /usr/share/gazebo/setup.bash" >> $BASHRC_PATH
