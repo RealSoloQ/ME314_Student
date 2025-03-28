@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(me314)
+project(me314_student)
 
 # Dependencies
 find_package(ament_cmake REQUIRED)
