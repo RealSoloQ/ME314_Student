@@ -39,7 +39,7 @@ def generate_launch_description():
     
     # 2) Launch xarm_pose_commander with a delay
     xarm_pose_commander_node = Node(
-        package='me314',  
+        package='me314_student',  
         executable='xarm_commander_node.py',    
         output='screen',
         parameters=[{'use_sim': False}]  # Setting use_sim to False for real hardware

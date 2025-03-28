@@ -37,8 +37,8 @@ def generate_launch_description():
             output='screen',
             arguments=[
                 '-file', os.path.join(
-                    get_package_share_directory('me314'),
-                    'me314', 'gazebo_models', 'red_block.sdf'
+                    get_package_share_directory('me314_student'),
+                    'me314_student', 'gazebo_models', 'red_block.sdf'
                 ),
                 '-entity', 'block',
                 '-x', '0', '-y', '-1', '-z', '1.021'
@@ -49,7 +49,7 @@ def generate_launch_description():
     
     # 2) Launch xarm_pose_commander with a delay
     xarm_pose_commander_node = Node(
-        package='me314',  
+        package='me314_student',  
         executable='xarm_commander_node.py',    
         output='screen',
         parameters=[{'use_sim': True}] 
