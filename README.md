@@ -86,7 +86,7 @@ source install/setup.bash
 ros2 run me314 xarm_spacemouse_ros2.py
 ```
 
-#### Option #1: Control XArm using XArm Planner (with MoveIt API) (RECOMMENDED)
+#### Control XArm using XArm Planner (with MoveIt API) (RECOMMENDED)
 
 1. Control in Gazebo
 
@@ -112,21 +112,7 @@ ros2 run me314 xarm_a2b_example.py
 
 c. In another terminal run 
 
-#### Option #2: Control XArm in Gazebo (using pymoveit2 python binding)
-
-1. Launch gazebo with moveit configuration
-
-```bash
-ros2 launch xarm_moveit_config xarm7_moveit_gazebo.launch.py add_gripper:=true
-```
-
-2. Run example pymoveit2 script
-
-```bash
-ros2 run me314 move_A_to_B_pymoveit.py --ros-args -p dof:=7 -p robot_type:=xarm
-```
-
-#### Control XArm in Real (using XArm API)
+#### Control XArm using XArm API in real (not recommended)
 
 ```bash
 ros2 run me314 move_A_to_B.py
@@ -134,5 +120,38 @@ ros2 run me314 move_A_to_B.py
 
 ### Using Docker Image (for Windows and Mac users)
 1. Install Docker Desktop (or Docker Engine for CLI only)
-2. If using terminal: docker pull
-3. If using Docker Desktop
+2. In terminal run: 
+
+```bash
+docker pull aqiu218/me314_xarm_ros2
+```
+
+3. Start container using the following command (only needs to be run once): 
+
+docker run --privileged --name me314 -p 6080:80 --shm-size=512m -v <computer-path>:<docker-path> aqiu218/me314_xarm_ros2
+
+Example:
+
+```bash
+docker run --privileged --name me314 -p 6080:80 --shm-size=512m -v /home/alex/Documents/me314_test:/home/ubuntu/Desktop/me314 aqiu218/me314_xarm_ros2
+```
+
+4. Navigate to http://localhost:6080/
+
+* For more info about docker check out this quickstart guide: https://github.com/armlabstanford/collaborative-robotics/wiki/Docker-Quickstart
+* Docker cheat sheet commands here: https://docs.docker.com/get-started/docker_cheatsheet.pdf 
+
+5. Stop container by pressing ctrl+c in terminal
+
+6. To run container in the future:
+
+```bash
+docker start me314
+```
+
+7. To stop container: 
+
+```bash
+docker stop me314
+```
+

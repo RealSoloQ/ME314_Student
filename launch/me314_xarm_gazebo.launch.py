@@ -2,12 +2,19 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, TimerAction
+from launch.actions import IncludeLaunchDescription, TimerAction, ExecuteProcess
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    # 1) Include the xarm7 MoveIt+Gazebo launch
+
+    # Add a delay before starting Gazebo to let ROS initialize
+    initial_delay = ExecuteProcess(
+        cmd=["sleep", "5"],
+        name="initial_delay"
+    )
+
+    # Include the xarm7 MoveIt+Gazebo launch
     xarm_moveit_gazebo_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
@@ -23,7 +30,7 @@ def generate_launch_description():
     )
 
     block_spawn = TimerAction(
-        period=5.0,  # give Gazebo time to start
+        period=15.0,  # give Gazebo time to start
         actions=[Node(
             package='gazebo_ros',
             executable='spawn_entity.py',
@@ -48,10 +55,11 @@ def generate_launch_description():
         parameters=[{'use_sim': True}] 
     )
     
-    # Add a delay of 5 seconds before starting the commander
-    delayed_commander = TimerAction(period=13.0, actions=[xarm_pose_commander_node])
+    # Add a delay before starting the commander
+    delayed_commander = TimerAction(period=20.0, actions=[xarm_pose_commander_node])
     
     return LaunchDescription([
+        initial_delay,
         xarm_moveit_gazebo_launch,
         block_spawn,
         delayed_commander

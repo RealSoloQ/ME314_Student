@@ -25,7 +25,7 @@ RUN sudo apt install -y ros-humble-realsense2-*
 
 # Clone xarm_ros2
 RUN mkdir -p /home/ubuntu/xarm_ros2_ws/src && cd  /home/ubuntu/xarm_ros2_ws/src \
-    && git clone https://github.com/xArm-Developer/xarm_ros2.git --recursive -b $ROS_DISTRO
+    && git clone https://github.com/RealSoloQ/xarm_ros2.git --recursive -b $ROS_DISTRO
 
 RUN cd /home/ubuntu/xarm_ros2_ws/src/ && rosdep update && rosdep install --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y
 
@@ -36,6 +36,15 @@ RUN cd /home/ubuntu/xarm_ros2_ws/src/xarm_ros2 && git pull \
 RUN cd  /home/ubuntu/xarm_ros2_ws/src && git clone https://github.com/RealSoloQ/ME314_Student.git
 
 RUN source /opt/ros/humble/setup.bash && cd /home/ubuntu/xarm_ros2_ws/ && colcon build --symlink-install
+
+# Create ALSA config to fix audio errors
+RUN mkdir -p /home/ubuntu/.config/
+RUN echo "pcm.!default {" > /home/ubuntu/.asoundrc
+RUN echo "  type null" >> /home/ubuntu/.asoundrc
+RUN echo "}" >> /home/ubuntu/.asoundrc
+RUN echo "pcm.null {" >> /home/ubuntu/.asoundrc
+RUN echo "  type null" >> /home/ubuntu/.asoundrc
+RUN echo "}" >> /home/ubuntu/.asoundrc
 
 # COPY ./entrypoint.sh /
 

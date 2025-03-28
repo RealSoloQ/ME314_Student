@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="3">
-  <name>me314</name>
+  <name>me314_student</name>
   <version>0.0.1</version>
   <description>A ROS2 package for xArm integration...</description>
   <maintainer email="aqiu34@stanford.edu">Alex Qiu</maintainer>
