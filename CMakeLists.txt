@@ -21,13 +21,13 @@ ament_python_install_package(${PROJECT_NAME})
 
 # Install Python executables
 install(PROGRAMS
-  me314/xarm_api_scripts/move_A_to_B.py
-  me314/teleoperation/xarm_spacemouse_ros2.py
-  me314/teleoperation/list_hid.py
-  me314/drivers/install_spacemouse.py
-  me314/xarm_planner/xarm_test_move_script.py
-  me314/xarm_planner/xarm_commander_node.py
-  me314/xarm_planner/xarm_a2b_example.py
+  me314_student/xarm_api_scripts/move_A_to_B.py
+  me314_student/teleoperation/xarm_spacemouse_ros2.py
+  me314_student/teleoperation/list_hid.py
+  me314_student/drivers/install_spacemouse.py
+  me314_student/xarm_planner/xarm_test_move_script.py
+  me314_student/xarm_planner/xarm_commander_node.py
+  me314_student/xarm_planner/xarm_a2b_example.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -40,8 +40,8 @@ install(
 
 # Install any Gazebo models
 install(
-  DIRECTORY me314/gazebo_models
-  DESTINATION share/${PROJECT_NAME}/me314
+  DIRECTORY me314_student/gazebo_models
+  DESTINATION share/${PROJECT_NAME}/me314_student
   PATTERN "__pycache__" EXCLUDE
 )
 

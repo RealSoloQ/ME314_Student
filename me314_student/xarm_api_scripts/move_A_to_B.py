@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import numpy as np
-from me314.constants import ROBOT_IP
-from me314.robot.xarm_robot import XArm
+from me314_student.constants import ROBOT_IP
+from me314_student.robot.xarm_robot import XArm
 
 def main():
     robot = XArm("xarm", ROBOT_IP)

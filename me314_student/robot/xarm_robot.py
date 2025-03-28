@@ -4,7 +4,7 @@ xarm robot implementation for policy learning.
 from termcolor import cprint
 from xarm.wrapper import XArmAPI
 
-from me314.robot.robot_abc import RobotABC
+from me314_student.robot.robot_abc import RobotABC
 
 class XArm(RobotABC):
     """
