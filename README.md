@@ -62,7 +62,7 @@ cd ~
 mkdir -p xarm_ros2_ws/src
 cd ~/xarm_ros2_ws/src
 git clone https://github.com/xArm-Developer/xarm_ros2.git --recursive -b $ROS_DISTRO
-git clone https://github.com/RealSoloQ/ME314_XArm.git
+git clone https://github.com/RealSoloQ/ME314_Student.git
 ```
 
 #### Build Workspace
@@ -83,7 +83,7 @@ source install/setup.bash
 #### Tele-Operation with Spacemouse
 
 ```bash
-ros2 run me314 xarm_spacemouse_ros2.py
+ros2 run me314_student xarm_spacemouse_ros2.py
 ```
 
 #### Control XArm using XArm Planner (with MoveIt API) (RECOMMENDED)
@@ -93,7 +93,7 @@ ros2 run me314 xarm_spacemouse_ros2.py
 a. In one terminal run the following command:
 
 ```bash
-ros2 launch me314 me314_xarm_gazebo.launch.py
+ros2 launch me314_student me314_xarm_gazebo.launch.py
 ```
 
 2. Control in Real
@@ -101,13 +101,13 @@ ros2 launch me314 me314_xarm_gazebo.launch.py
 a. In one terminal run the xarm planner launch command:
 
 ```bash
-ros2 launch me314 me314_xarm_real.launch.py
+ros2 launch me314_student me314_xarm_real.launch.py
 ```
 
 b. In another terminal run script (example):
 
 ```bash
-ros2 run me314 xarm_a2b_example.py
+ros2 run me314_student xarm_a2b_example.py
 ```
 
 c. In another terminal run 
@@ -115,7 +115,7 @@ c. In another terminal run
 #### Control XArm using XArm API in real (not recommended)
 
 ```bash
-ros2 run me314 move_A_to_B.py
+ros2 run me314_student move_A_to_B.py
 ```
 
 ### Using Docker Image (for Windows and Mac users)
@@ -138,9 +138,6 @@ docker run --privileged --name me314 -p 6080:80 --shm-size=512m -v /home/alex/Do
 
 4. Navigate to http://localhost:6080/
 
-* For more info about docker check out this quickstart guide: https://github.com/armlabstanford/collaborative-robotics/wiki/Docker-Quickstart
-* Docker cheat sheet commands here: https://docs.docker.com/get-started/docker_cheatsheet.pdf 
-
 5. Stop container by pressing ctrl+c in terminal
 
 6. To run container in the future:
@@ -155,3 +152,9 @@ docker start me314
 docker stop me314
 ```
 
+### Tips/Notes
+
+- If using Terminator (in docker ubuntu), ctrl+shift+E is shortkey to open side by side terminal tab
+- If xarm isn't spawning in gazebo, try quitting and re-running launch command
+- For more info about docker check out this quickstart guide: https://github.com/armlabstanford/collaborative-robotics/wiki/Docker-Quickstart
+- Docker cheat sheet commands here: https://docs.docker.com/get-started/docker_cheatsheet.pdf 
